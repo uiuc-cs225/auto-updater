@@ -46,6 +46,9 @@ int main(int argc, char **argv)
     char *out;
     int new = 0;
 
+    //Set default path
+    setenv("PATH", "/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin", 1);
+
     //Check to make sure we are running as root
     if(getuid() != 0)
     {
