@@ -9,4 +9,21 @@ mv cs225-${VER}.tar.gz archlinux
 rm -rf cs225-${VER}
 cd archlinux
 echo `makepkg -g` >> PKGBUILD
-makepkg
+makepkg -src
+OLD=0
+if [ -f ~/.makepkg.conf ]; then
+    cp ~/.makepkg.conf ~/.makepkg.conf.bkp
+    OLD=1
+else
+    touch ~/.makepkg.conf
+fi
+echo 'CARCH="i686"' >> ~/.makepkg.conf
+echo 'CHOST="i686-pc-linux-gnu"' >> ~/.makepkg.conf
+echo 'CFLAGS="-m32 -march=i686 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"' >> ~/.makepkg.conf
+echo 'CXXFLAGS="${CFLAGS}"' >> ~/.makepkg.conf
+linux32 makepkg -src
+if [ "$OLD" -eq "1" ]; then
+    mv ~/.makepkg.conf.bkp ~/.makepkg.conf
+else
+    rm ~/.makepkg.conf
+fi
