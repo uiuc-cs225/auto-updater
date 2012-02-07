@@ -73,7 +73,14 @@ int main(int argc, char **argv)
     free(out);
 
     //Finalize Updating the System
-    out = openProc("/usr/bin/pacman -Suf --noconfirm 2>&1");
+    out = openProc("/usr/bin/yes | /usr/bin/pacman -Suuf 2>&1");
+    if(out == NULL)
+    {
+        printf("Failed to install updated packages.\n");
+        return EXIT_FAILURE;
+    }
+    free(out);
+    out = openProc("/usr/bin/yes | /usr/bin/pacman -Suuf 2>&1");
     if(out == NULL)
     {
         printf("Failed to install updated packages.\n");
