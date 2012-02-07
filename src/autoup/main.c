@@ -91,6 +91,13 @@ int main(int argc, char **argv)
     //If new packages were installed, write to the reboot file
     if(new)
     {
+        //Fixes a kernel build error by automatically rebuilding the kernel
+        out = openProc("/usr/bin/yes | /usr/bin/pacman -Sf linux 2>&1");
+        if(out == NULL)
+            printf("Failed to process kernel upgrade.\n");
+        free(out);
+
+        //Writes a 1 to the update file for client info
         updated = fopen(UPDATE_FILE, "w");
         if(updated == NULL)
         {
@@ -99,7 +106,11 @@ int main(int argc, char **argv)
         }
         fputc('1', updated);
         fclose(updated);
+
+        //Allows the client to writeback to the log
         chmod(UPDATE_FILE, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+
+
         printf("Installed new packages.\nPlease Reboot your system.\n");
     }
     else

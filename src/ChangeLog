@@ -2,3 +2,6 @@
 	Initial Release
 0.2:
 	Fixed a bug which prevents the user from updating conflicting packages
+	Finished the GUI Interface
+0.2.1:
+	Fixed a bug preventing the kernel from booting after a build
