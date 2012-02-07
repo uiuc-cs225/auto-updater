@@ -5,3 +5,5 @@
 	Finished the GUI Interface
 0.2.1:
 	Fixed a bug preventing the kernel from booting after a build
+0.2.2:
+	Fixed a bug where the path wasn't properly set for pacman
