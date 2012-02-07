@@ -1,0 +1,12 @@
+#!/bin/bash
+VER=`git tag | sort -Vr | head -n1`
+echo "pkgver=${VER}" > PKGBUILD
+cat PKGBUILD.proto >> PKGBUILD
+cd ../
+cp -ra src cs225-${VER}
+tar czf cs225-${VER}.tar.gz cs225-${VER}
+mv cs225-${VER}.tar.gz archlinux
+rm -rf cs225-${VER}
+cd archlinux
+echo `makepkg -g` >> PKGBUILD
+makepkg

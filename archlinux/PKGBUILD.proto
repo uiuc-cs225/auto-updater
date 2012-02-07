@@ -1,6 +1,5 @@
 # Maintainer: William Kennington <kenning1@illinois.edu>
 pkgname=cs225
-pkgver=0.2.1
 pkgrel=1
 epoch=0
 pkgdesc="Auto updater for archlinux virtual machine"
@@ -19,7 +18,6 @@ backup=()
 options=('strip' 'zipman')
 source=("http://www.wkennington.com/cs225/src/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=('639d985550fec358abcb784781b158891143dd653f0bc0699caf90539d06a51e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
