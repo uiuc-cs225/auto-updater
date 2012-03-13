@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -avz --delete -e ssh ~/cs225/i686 kenning1@comoto.cs.illinois.edu:/mounts/comoto/disks/0/www/comoto/htdocs/cs225/pkg/

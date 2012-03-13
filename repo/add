@@ -1,0 +1,12 @@
+#!/bin/bash
+FILES=`ls ~/cs225-new`
+cd ~/cs225/i686/
+for i in ${FILES}; do
+	NAME=`echo $i | sed -rn 's/(.*)-[0-9.A-Za-z_]*-[0-9]*-[^-]*/\1/p'`
+	echo $NAME
+	STR="s/^${NAME}-[0-9A-Za-z._]*-[0-9]*-(i686|x86_64|any).pkg.tar.(gz|xz|bz2)/\0/p"
+	`ls . | sed -rn ${STR} | xargs rm -f`
+	mv ~/cs225-new/$i .
+	repo-add cs225.db.tar.gz $i
+	repo-add -f cs225.files.tar.gz $i
+done
