@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -rf *.tar.* pkg src PKGBUILD
+rm -rf *.tar.* pkg src PKGBUILD .PKGINFO
