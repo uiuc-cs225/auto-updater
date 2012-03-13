@@ -1,6 +1,6 @@
 # Maintainer: William Kennington <kenning1@illinois.edu>
 pkgname=cs225
-pkgrel=3
+pkgrel=4
 epoch=0
 pkgdesc="Auto updater for archlinux virtual machine"
 arch=('i686' 'x86_64')
@@ -32,6 +32,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -dv $pkgdir/usr/nbin/
-	ln -s /usr/bin/g++-4.4 $pkgdir/usr/nbin/g++
-	ln -s /usr/bin/g++-4.4 $pkgdir/usr/nbin/c++
+	#ln -s /usr/bin/g++-4.4 $pkgdir/usr/nbin/g++
+	#ln -s /usr/bin/g++-4.4 $pkgdir/usr/nbin/c++
 }
