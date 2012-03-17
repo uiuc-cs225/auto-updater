@@ -1,13 +1,13 @@
 # Maintainer: William Kennington <kenning1@illinois.edu>
 pkgname=cs225
-pkgrel=5
+pkgrel=6
 epoch=0
 pkgdesc="Auto updater for archlinux virtual machine"
 arch=('i686' 'x86_64')
 url="http://www.wkennington.com/cs225/"
 license=('GPLv2')
 groups=('cs225')
-depends=('pacman' 'gtk2' 'glibc')
+depends=('pacman' 'gtk2' 'glibc' 'gnuplot')
 makedepends=('gtk2')
 checkdepends=()
 optdepends=()
